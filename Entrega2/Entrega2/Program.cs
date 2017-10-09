@@ -117,6 +117,8 @@ namespace Entrega2
                     }
                 }
 
+                InitiateTracer(); // Inicializa el tracer para guardar todo en log.txt
+
                 contC += c;
                 contG += g;
                 string s1 = "Cantidad de clientes recepcionados: " + c;
@@ -128,16 +130,16 @@ namespace Entrega2
                 string s7 = "Local con mayor clientes: " + max2.Nombre + " Atendidos: " + maxC;
                 string s8 = "Local con menor clientes: " + min2.Nombre + " Atendidos: " + minC;
                 string[] repFin = new string[] { s1, s2, s3, s4, s5, s6, s7, s8 };
-                Console.WriteLine();
-                Console.WriteLine(s1);
-                Console.WriteLine(s2);
-                Console.WriteLine(s3);
-                Console.WriteLine(s4);
-                Console.WriteLine(s5);
-                Console.WriteLine(s6);
-                Console.WriteLine(s7);
-                Console.WriteLine(s8);
-                File.WriteAllLines("reporte" + day + ".txt", repFin);
+                Trace.WriteLine("");
+                Trace.WriteLine(s1);
+                Trace.WriteLine(s2);
+                Trace.WriteLine(s3);
+                Trace.WriteLine(s4);
+                Trace.WriteLine(s5);
+                Trace.WriteLine(s6);
+                Trace.WriteLine(s7);
+                Trace.WriteLine(s8);
+                SaveReport(day, repFin);
                 while (sw.ElapsedMilliseconds < 1000)
                 {
                     if (PauseCurrentOperation())
@@ -147,6 +149,11 @@ namespace Entrega2
                 }
             }
 
+        }
+
+        private static void SaveReport(int day, string[] repFin)
+        {
+            File.WriteAllLines("reporte" + day + ".txt", repFin);
         }
 
         public static void RunSim(List<Piso> pisos, int precioArriendo, int contC, int contG)
@@ -351,6 +358,22 @@ namespace Entrega2
             return false;
         }
 
-        
+        // log.txt  http://www.mcrook.com/2014/11/quick-and-easy-console-logging-trace.html
+        private static void InitiateTracer()
+        {
+            Trace.Listeners.Clear();
+            var dir = AppDomain.CurrentDomain.BaseDirectory;
+            var twtl = new TextWriterTraceListener("log.txt")
+            {
+                Name = "TextLogger",
+                TraceOutputOptions = TraceOptions.ThreadId | TraceOptions.DateTime
+            };
+            var ctl = new ConsoleTraceListener(false) { TraceOutputOptions = TraceOptions.DateTime };
+            Trace.Listeners.Add(twtl);
+            Trace.Listeners.Add(ctl);
+            Trace.AutoFlush = true;
+        }
+
+
     }
 }
