@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Entrega2
+namespace POOmall
 {
     class Piso
     {

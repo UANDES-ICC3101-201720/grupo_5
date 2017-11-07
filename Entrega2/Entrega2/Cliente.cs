@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Entrega2
+namespace POOmall
 {
     class Cliente : Persona
     {

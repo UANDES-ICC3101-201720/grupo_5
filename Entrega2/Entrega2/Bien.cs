@@ -1,4 +1,4 @@
-﻿namespace Entrega2
+﻿namespace POOmall
 {
     class Bien
     {
