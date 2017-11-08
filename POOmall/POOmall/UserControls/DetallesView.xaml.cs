@@ -16,16 +16,15 @@ using System.Windows.Shapes;
 namespace POOmall.UserControls
 {
     /// <summary>
-    /// Interaction logic for LocalesView.xaml
+    /// Interaction logic for DetallesView.xaml
     /// </summary>
-    public partial class LocalesView : UserControl
+    public partial class DetallesView : UserControl
     {
-        public LocalesView()
+        public DetallesView()
         {
             InitializeComponent();
 
-            // Cambiar null a getter de lista de locales generados
-            ListBoxLocales.ItemsSource = null;
+            
         }
     }
 }

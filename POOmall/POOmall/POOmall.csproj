@@ -56,6 +56,9 @@
     </ApplicationDefinition>
     <Compile Include="Programa\Servicio.cs" />
     <Compile Include="Programa\Trabajador.cs" />
+    <Compile Include="UserControls\DetallesView.xaml.cs">
+      <DependentUpon>DetallesView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\LocalesView.xaml.cs">
       <DependentUpon>LocalesView.xaml</DependentUpon>
     </Compile>
@@ -75,6 +78,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UserControls\DetallesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\LocalesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

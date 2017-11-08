@@ -1,12 +1,29 @@
 ﻿<UserControl x:Class="POOmall.UserControls.LocalesView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:POOmall.UserControls"
-             mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
+             mc:Ignorable="d"
+             d:DesignHeight="300"
+             d:DesignWidth="300">
+  <Grid>
+    <!-- Lista de locales -->
+    <ListBox x:Name="ListBoxLocales">
+      <ListBox.ItemTemplate>
+        <DataTemplate>
+          <StackPanel Orientation="Horizontal">
+            <!--El primer elemento sería una imagen de la tienda y el segundo el nombre -->
+            <!-->
+            <Image Source="{Binding (comoSeLlameElParametroQueGuardaLaImagen)}">
+              <TextBlock Text="{Binding Nombre}" VerticalAlignment="Center" Margin="30" />
             
-    </Grid>
+            </!-->
+          </StackPanel>
+        </DataTemplate>
+      </ListBox.ItemTemplate>
+    </ListBox>
+  </Grid>
+  
+  
 </UserControl>

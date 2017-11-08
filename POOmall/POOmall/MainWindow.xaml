@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:POOmall"
+        xmlns:views="clr-namespace:POOmall.UserControls"
         mc:Ignorable="d"
         Title="Simulation"
         WindowStartupLocation="CenterScreen"
@@ -19,7 +19,15 @@
                FontWeight="Bold" />
     <TabControl MinHeight="400">
       <TabItem Header="Main"></TabItem>
-      <TabItem Header="Reporte"></TabItem>
+      <TabItem Header="Locales">
+        <StackPanel Orientation="Horizontal">
+          <!-- LocalesView -->
+          <views:LocalesView />
+          <!-- DetallesView -->
+          <views:DetallesView />
+        </StackPanel>
+      </TabItem>
+      <TabItem Header="Reporte General"></TabItem>
       <TabItem Header="Ajustes"></TabItem>
     </TabControl>
   </StackPanel>
