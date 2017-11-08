@@ -10,7 +10,7 @@ namespace POOmall
 {
     class Program
     {
-        static void Main(string[] args)
+        static void NotMain(string[] args)
         {
             Random rn = new Random();
             Categoria ropa = new Categoria("Ropa");
