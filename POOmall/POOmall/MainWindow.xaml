@@ -5,9 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:POOmall"
         mc:Ignorable="d"
-        Title="MainWindow"
-        Height="800"
-        Width="1280">
+        Title="Simulation"
+        WindowStartupLocation="CenterScreen"
+        Height="700"
+        Width="1000"
+        FontSize="18">
   <StackPanel HorizontalAlignment="Stretch"
               VerticalAlignment="Stretch">
     <TextBlock TextWrapping="Wrap"
@@ -15,5 +17,10 @@
                FontSize="35"
                HorizontalAlignment="Center"
                FontWeight="Bold" />
+    <TabControl MinHeight="400">
+      <TabItem Header="Main"></TabItem>
+      <TabItem Header="Reporte"></TabItem>
+      <TabItem Header="Ajustes"></TabItem>
+    </TabControl>
   </StackPanel>
 </Window>

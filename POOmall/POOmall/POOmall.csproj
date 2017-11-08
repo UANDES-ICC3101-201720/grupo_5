@@ -54,8 +54,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Servicio.cs" />
-    <Compile Include="Trabajador.cs" />
+    <Compile Include="Programa\Servicio.cs" />
+    <Compile Include="Programa\Trabajador.cs" />
+    <Compile Include="UserControls\LocalesView.xaml.cs">
+      <DependentUpon>LocalesView.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -64,20 +67,24 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Bien.cs" />
-    <Compile Include="Categoria.cs" />
-    <Compile Include="Cliente.cs" />
-    <Compile Include="Local.cs" />
+    <Compile Include="Programa\Bien.cs" />
+    <Compile Include="Programa\Categoria.cs" />
+    <Compile Include="Programa\Cliente.cs" />
+    <Compile Include="Programa\Local.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UserControls\LocalesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Persona.cs" />
-    <Compile Include="Piso.cs" />
-    <Compile Include="Producto.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Programa\Persona.cs" />
+    <Compile Include="Programa\Piso.cs" />
+    <Compile Include="Programa\Producto.cs" />
+    <Compile Include="Programa\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
