@@ -11,7 +11,8 @@
         Width="1000"
         FontSize="18">
   <StackPanel HorizontalAlignment="Stretch"
-              VerticalAlignment="Stretch">
+              VerticalAlignment="Stretch"
+              Margin="13,0,-13,0">
     <TextBlock TextWrapping="Wrap"
                Text="POO Mall Simulator"
                FontSize="35"
