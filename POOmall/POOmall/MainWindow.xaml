@@ -10,26 +10,64 @@
         Height="700"
         Width="1000"
         FontSize="18">
-  <StackPanel HorizontalAlignment="Stretch"
+    <StackPanel HorizontalAlignment="Stretch"
               VerticalAlignment="Stretch"
               Margin="13,0,-13,0">
-    <TextBlock TextWrapping="Wrap"
+        <TextBlock TextWrapping="Wrap"
                Text="POO Mall Simulator"
                FontSize="35"
                HorizontalAlignment="Center"
                FontWeight="Bold" />
-    <TabControl MinHeight="400">
-      <TabItem Header="Main"></TabItem>
-      <TabItem Header="Locales">
-        <StackPanel Orientation="Horizontal">
-          <!-- LocalesView -->
-          <views:LocalesView />
-          <!-- DetallesView -->
-          <views:DetallesView />
-        </StackPanel>
-      </TabItem>
-      <TabItem Header="Reporte General"></TabItem>
-      <TabItem Header="Ajustes"></TabItem>
-    </TabControl>
-  </StackPanel>
+        <TabControl MinHeight="400" Margin="0,0,37,0">
+            <TabItem Header="Main"></TabItem>
+            <TabItem Header="Locales" RenderTransformOrigin="0.5,0.5">
+                <TabItem.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="0.796"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TabItem.RenderTransform>
+                <StackPanel Orientation="Horizontal">
+                    <!-- LocalesView -->
+                    <views:LocalesView />
+                    <!-- DetallesView -->
+                    <views:DetallesView />
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Reporte General">
+                <TabItem.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="0.796"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TabItem.RenderTransform>
+                <StackPanel Orientation="Horizontal">
+                    <!-- LocalesView -->
+                    <views:LocalesView />
+                    <!-- DetallesView -->
+                    <views:DetallesView />
+                    <TextBox x:Name="repoCons" TextWrapping="Wrap" IsReadOnly ="True" Text = "Reporte" Width="523"/>
+                    <StackPanel Orientation="Vertical" Width="323">
+                        <Button x:Name="rep1" Content="Dia 1" Margin="0,0,0,10" Click="rep1_Click"/>
+                        <Button x:Name="rep2" Content="Dia 2" Margin="0,0,0,10" Click="rep2_Click"/>
+                        <Button x:Name="rep3" Content="Dia 3" Margin="0,0,0,10" Click="rep3_Click"/>
+                        <Button x:Name="rep4" Content="Dia 4" Margin="0,0,0,10" Click="rep4_Click"/>
+                        <Button x:Name="rep5" Content="Dia 5" Margin="0,0,0,10" Click="rep5_Click"/>
+                        <Button x:Name="rep6" Content="Dia 6" Margin="0,0,0,10" Click="rep6_Click"/>
+                        <Button x:Name="rep7" Content="Dia 7" Margin="0,0,0,10" Click="rep7_Click"/>
+                        <Button x:Name="rep8" Content="Dia 8" Margin="0,0,0,10" Click="rep8_Click"/>
+                        <Button x:Name="rep9" Content="Dia 9" Margin="0,0,0,10" Click="rep9_Click"/>
+                        <Button x:Name="rep10" Content="Dia 10" Click="rep10_Click"/>
+
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Ajustes"></TabItem>
+            
+        </TabControl>
+    </StackPanel>
 </Window>

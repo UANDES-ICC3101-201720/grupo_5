@@ -1,6 +1,6 @@
 ﻿namespace POOmall
 {
-    class Bien
+    public class Bien
     {
         public string Nombre;
         public int Id;
