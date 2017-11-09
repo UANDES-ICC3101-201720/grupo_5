@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="POOmall.UserControls.AddPisosView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:POOmall.UserControls"
+             mc:Ignorable="d"
+             d:DesignHeight="360"
+             d:DesignWidth="300">
+  <Grid VerticalAlignment="Stretch">
+    <Grid Margin="0,0,0,-10">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="3*" />
+        <ColumnDefinition Width="3*" />
+      </Grid.ColumnDefinitions>
+      <StackPanel Grid.ColumnSpan="1"
+                  Margin="0,0,0,60">
+        <Button Name="BtnAddPiso"
+                Margin="5"
+                Height="25"
+                Content="Añadir piso" />
+        <ListBox Name="ListBox"
+                 Height="300">
+
+        </ListBox>
+
+      </StackPanel>
+      <StackPanel Grid.Column="1"
+                  Margin="5,30,5,20">
+        <Label Content="Area del piso:" />
+        <TextBox PreviewTextInput="OnlyNumbers" />
+        <Label Content="Cantidad de tiendas:" />
+        <Button Height="25" Content="Agregar" Name="BtnAddTiendas" Click="BtnAddTiendas_OnClick"/>
+        <Label Content="Area de cada tienda:" />
+        <ListBox ScrollViewer.VerticalScrollBarVisibility="Auto"
+                 Height="149"
+                 Name="ListBoxAreas" ItemsSource="{Binding}">
+          <ListBox.ItemTemplate>
+            <DataTemplate>
+
+              <StackPanel Orientation="Horizontal">
+                <Label Content="Area:      " />
+                <TextBox Width="75"  PreviewTextInput="OnlyNumbers" />
+              </StackPanel>
+            </DataTemplate>
+          </ListBox.ItemTemplate>
+        </ListBox>
+        <Button Name="BtnGuardar" Click="BtnGuardar_OnClick" Content="Guardar" Margin="0,5"
+                Height="25"></Button>
+
+      </StackPanel>
+    </Grid>
+  </Grid>
+</UserControl>
+
+
+

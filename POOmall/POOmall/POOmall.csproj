@@ -56,6 +56,9 @@
     </ApplicationDefinition>
     <Compile Include="Programa\Servicio.cs" />
     <Compile Include="Programa\Trabajador.cs" />
+    <Compile Include="UserControls\AddPisosView.xaml.cs">
+      <DependentUpon>AddPisosView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\DetallesView.xaml.cs">
       <DependentUpon>DetallesView.xaml</DependentUpon>
     </Compile>
@@ -78,6 +81,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UserControls\AddPisosView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\DetallesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

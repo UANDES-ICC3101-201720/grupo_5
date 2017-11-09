@@ -12,14 +12,29 @@
         FontSize="18">
   <StackPanel HorizontalAlignment="Stretch"
               VerticalAlignment="Stretch"
-              Margin="13,0,-13,0">
+              Margin="5,0,5,0">
     <TextBlock TextWrapping="Wrap"
                Text="POO Mall Simulator"
                FontSize="35"
                HorizontalAlignment="Center"
                FontWeight="Bold" />
-    <TabControl MinHeight="400">
-      <TabItem Header="Main"></TabItem>
+    <TabControl MinHeight="400"
+                VerticalAlignment="Stretch"
+                Margin="10,0,10,0"
+                Height="543">
+      <TabItem Header="Main">
+        <StackPanel HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch">
+          <Button Name="BtnEmpezar"
+                  Content="Empezar simulación"
+                  Margin="10,10,744,10"
+                  Click="BtnEmpezar_OnClick" />
+          <views:AddPisosView x:Name="PisosView"
+                              Visibility="Visible"
+                              Height="457" />
+
+        </StackPanel>
+      </TabItem>
       <TabItem Header="Locales">
         <StackPanel Orientation="Horizontal">
           <!-- LocalesView -->

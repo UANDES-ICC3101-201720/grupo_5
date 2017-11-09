@@ -24,5 +24,11 @@ namespace POOmall
         {
             InitializeComponent();
         }
+
+        private void BtnEmpezar_OnClick(object sender, RoutedEventArgs e)
+        {
+            this.PisosView.Visibility = Visibility.Visible;
+            this.BtnEmpezar.IsEnabled = false;
+        }
     }
 }
