@@ -41,11 +41,6 @@ namespace POOmall
             int precioArriendo = 3;
             int dineroInicial = 3000;
 
-            Console.WriteLine("Bienvenido a POO Mall");
-            Console.WriteLine("POO Mall esta abierto 12 horas al dia.");
-            Console.WriteLine("El dinero inicial es: " + dineroInicial);
-            Console.WriteLine("El precio de arriendo es: " + precioArriendo);
-
             pisnum = 1; // aqui debe ingresarlo el usuario
 
             //pisnum = ContarPiso(); esto era antes, falla por pedir consola
