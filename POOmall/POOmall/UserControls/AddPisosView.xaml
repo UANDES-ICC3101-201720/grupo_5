@@ -13,14 +13,16 @@
         <ColumnDefinition Width="3*" />
         <ColumnDefinition Width="3*" />
       </Grid.ColumnDefinitions>
-      <StackPanel Grid.ColumnSpan="1"
+      <StackPanel Grid.Column="0"
                   Margin="0,0,0,60">
-        <Button Name="BtnAddPiso"
-                Margin="5"
-                Height="25"
-                Content="Añadir piso" />
+        <Label Content="Lista de pisos:" />
         <ListBox Name="ListBox"
                  Height="300">
+          <ListBox.ItemTemplate>
+            <DataTemplate>
+              <TextBlock Text="Piso" />
+            </DataTemplate>
+          </ListBox.ItemTemplate>
 
         </ListBox>
 
@@ -28,26 +30,38 @@
       <StackPanel Grid.Column="1"
                   Margin="5,30,5,20">
         <Label Content="Area del piso:" />
-        <TextBox PreviewTextInput="OnlyNumbers" />
+        <TextBox PreviewTextInput="OnlyNumbers"
+                 Name="TextBoxAreaPiso" />
         <Label Content="Cantidad de tiendas:" />
-        <Button Height="25" Content="Agregar" Name="BtnAddTiendas" Click="BtnAddTiendas_OnClick"/>
+        <Button Height="25"
+                Content="Agregar"
+                Name="BtnAddTiendas"
+                Click="BtnAddTiendas_OnClick" />
         <Label Content="Area de cada tienda:" />
         <ListBox ScrollViewer.VerticalScrollBarVisibility="Auto"
                  Height="149"
-                 Name="ListBoxAreas" ItemsSource="{Binding}">
+                 Name="ListBoxAreas">
           <ListBox.ItemTemplate>
             <DataTemplate>
 
               <StackPanel Orientation="Horizontal">
                 <Label Content="Area:      " />
-                <TextBox Width="75"  PreviewTextInput="OnlyNumbers" />
+                <TextBox Width="75"
+                         PreviewTextInput="OnlyNumbers"
+                         Text="{Binding this,   Mode=TwoWay, ElementName=TiendasCollection}" />
               </StackPanel>
             </DataTemplate>
           </ListBox.ItemTemplate>
         </ListBox>
-        <Button Name="BtnGuardar" Click="BtnGuardar_OnClick" Content="Guardar" Margin="0,5"
+        <Button Name="BtnGuardar"
+                Click="BtnGuardar_OnClick"
+                Content="Guardar"
+                Margin="0,5"
                 Height="25"></Button>
-
+        <Button Name="BtnSiguiente"
+                Content="Siguiente"
+                Height="25"
+                Visibility="Hidden"></Button>
       </StackPanel>
     </Grid>
   </Grid>
