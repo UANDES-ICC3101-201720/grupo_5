@@ -23,11 +23,17 @@ namespace POOmall
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static MainWindow Instance { get; private set; }
         public int pisnum = new int();
         public List<Piso> pisos = new List<Piso>();
         public int precioArriendo = 3000;
         public int dineroInicial = 3000;
-        public MainWindow()
+
+        static MainWindow()
+        {
+            Instance = new MainWindow();
+        }
+        private MainWindow()
         {
             Random rn = new Random();
             Categoria ropa = new Categoria("Ropa");

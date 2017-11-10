@@ -105,6 +105,6 @@
       <TabItem Header="Ajustes"></TabItem>
 
     </TabControl>
-    <Button Margin="800,15,50,0" Height="30" Name="BtnCorrer" Content="Correr simulación" Click="BtnCorrer_OnClick"></Button>
+    <Button Margin="800,15,50,0" Height="30" Name="BtnCorrer" Content="Correr simulación" Click="BtnCorrer_OnClick" Visibility="Hidden"></Button>
   </StackPanel>
 </Window>

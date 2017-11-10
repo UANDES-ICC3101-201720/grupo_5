@@ -28,6 +28,7 @@ namespace POOmall
         {
             Parche.dineroInicial = Convert.ToInt16(dinero.Text);
             Parche.precioArriendo = Convert.ToInt16(preciom2.Text);
+            POOmall.MainWindow.Instance.BtnCorrer.Visibility = Visibility.Visible;
             this.Close();
         }
     }
