@@ -1,6 +1,6 @@
 ﻿namespace POOmall
 {
-    class Categoria
+    public class Categoria
     {
         public string Nombre;
         public Categoria(string nombre)

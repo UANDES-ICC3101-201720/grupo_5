@@ -1,6 +1,6 @@
 ﻿namespace POOmall
 {
-    class Persona
+    public class Persona
     {
         public string Nombre;
         public int Rut;

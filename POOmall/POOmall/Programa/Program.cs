@@ -130,6 +130,7 @@ namespace POOmall
                 string s7 = "Local con mayor clientes: " + max2.Nombre + " Atendidos: " + maxC;
                 string s8 = "Local con menor clientes: " + min2.Nombre + " Atendidos: " + minC;
                 string[] repFin = new string[] { s1, s2, s3, s4, s5, s6, s7, s8 };
+                
                 Trace.WriteLine("");
                 Trace.WriteLine(s1);
                 Trace.WriteLine(s2);

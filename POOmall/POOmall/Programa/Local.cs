@@ -2,7 +2,7 @@
 
 namespace POOmall
 {
-    class Local
+    public class Local
     {
         public string Nombre;
         public int CantEmpleados;

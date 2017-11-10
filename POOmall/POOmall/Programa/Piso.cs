@@ -2,7 +2,7 @@
 
 namespace POOmall
 {
-    class Piso
+    public class Piso
     {
         public int Num;
         public int Espacio;

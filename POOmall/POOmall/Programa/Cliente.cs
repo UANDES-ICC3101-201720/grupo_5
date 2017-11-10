@@ -2,7 +2,7 @@
 
 namespace POOmall
 {
-    class Cliente : Persona
+    public class Cliente : Persona
     {
         public List<Producto> ListaCompra;
         public List<Producto> Compras;
