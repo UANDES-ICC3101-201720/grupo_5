@@ -29,7 +29,7 @@
                   Margin="10,10,744,10"
                   Click="BtnEmpezar_OnClick" />
           <views:AddPisosView x:Name="PisosView"
-                              Visibility="Visible"
+                              Visibility="Hidden"
                               Height="457" />
 
         </StackPanel>

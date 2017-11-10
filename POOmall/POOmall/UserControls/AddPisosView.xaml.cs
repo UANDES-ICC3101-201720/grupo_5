@@ -104,7 +104,9 @@ namespace POOmall.UserControls
         private void BtnSiguiente_OnClick(object sender, RoutedEventArgs e)
         {
             Parche.Pisos = Pisos;
-            
+            this.IsEnabled = false;
+            Window1 ventana = new Window1();
+            ventana.ShowDialog();
         }
     }
 }

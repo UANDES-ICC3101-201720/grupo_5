@@ -11,5 +11,7 @@ namespace POOmall
     {
         public static ObservableCollection<string> TiendasCollection;
         public static ObservableCollection<object[]> Pisos;
+        public static int precioArriendo;
+        public static int dineroInicial;
     }
 }

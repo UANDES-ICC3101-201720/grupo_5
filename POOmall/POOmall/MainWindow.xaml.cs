@@ -26,6 +26,7 @@ namespace POOmall
         public int pisnum = new int();
         public List<Piso> pisos = new List<Piso>();
         public int precioArriendo = 3000;
+        public int dineroInicial = 3000;
         public MainWindow()
         {
             Random rn = new Random();
@@ -41,7 +42,7 @@ namespace POOmall
             Categoria bow = new Categoria("Bowling");
             Categoria[] cats = new Categoria[] { ropa, hogar, alimento, ferre, tec, rapida, rest, cine, jue, bow };
             //int precioArriendo = 3;
-            int dineroInicial = 3000;
+            //int dineroInicial = 3000;
 
             pisnum = 1; // aqui debe ingresarlo el usuario
 
@@ -70,6 +71,9 @@ namespace POOmall
 
         public void GetConstruccion()
         {
+            precioArriendo = Parche.precioArriendo;
+            dineroInicial = Parche.dineroInicial;
+
             Categoria ropa = new Categoria("Ropa");
             Categoria hogar = new Categoria("Hogar");
             Categoria alimento = new Categoria("Alimento");
@@ -475,6 +479,7 @@ namespace POOmall
 
         private void BtnCorrer_OnClick(object sender, RoutedEventArgs e)
         {
+            BtnCorrer.IsEnabled = false;
             GetConstruccion();
             runFinal(pisos, precioArriendo);
 
