@@ -10,11 +10,14 @@
         ResizeMode="NoResize">
   <StackPanel Margin="15">
     <Label Content="Dinero Inicial"></Label>
-    <TextBox Name="dinero"/>
+    <TextBox Name="dinero"
+             PreviewTextInput="OnlyNumbers" />
     <Label Content="Sueldo Promedio"></Label>
-    <TextBox Name="sueldo"/>
+    <TextBox Name="sueldo"
+             PreviewTextInput="OnlyNumbers" />
     <Label Content="Precio m²"></Label>
-    <TextBox Name="preciom2"/>
+    <TextBox Name="preciom2"
+             PreviewTextInput="OnlyNumbers" />
     <Button Name="BtnListo" Margin="0,25,0,0" Height="30" Content="Listo" Click="BtnListo_OnClick"/>
   </StackPanel>
 </Window>

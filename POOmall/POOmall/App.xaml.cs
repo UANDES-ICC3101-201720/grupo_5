@@ -18,7 +18,7 @@ namespace POOmall
         public App()
         {
             Startup += App_Startup;
-
+            //https://stackoverflow.com/a/3828490
 
         }
 
