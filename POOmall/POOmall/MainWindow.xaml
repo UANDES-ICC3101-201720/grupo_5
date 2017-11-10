@@ -35,12 +35,16 @@
         </StackPanel>
       </TabItem>
       <TabItem Header="Locales">
-        <StackPanel Orientation="Horizontal">
-          <!-- LocalesView -->
-          <views:LocalesView />
-          <!-- DetallesView -->
-          <views:DetallesView />
+        <StackPanel Margin="10">
+          <Label Content="Para próxima entrega"/>
+          <StackPanel Orientation="Horizontal">
+            <!-- LocalesView -->
+            <views:LocalesView />
+            <!-- DetallesView -->
+            <views:DetallesView />
+          </StackPanel>
         </StackPanel>
+        
       </TabItem>
       <TabItem Header="Reporte General">
         <StackPanel Orientation="Horizontal">
