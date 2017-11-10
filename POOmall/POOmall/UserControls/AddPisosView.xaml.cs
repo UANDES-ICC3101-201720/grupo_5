@@ -91,5 +91,10 @@ namespace POOmall.UserControls
             }
             
         }
+
+        private void BtnSiguiente_OnClick(object sender, RoutedEventArgs e)
+        {
+            Parche.Pisos = Pisos;
+        }
     }
 }

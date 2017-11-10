@@ -19,12 +19,13 @@
                HorizontalAlignment="Center"
                FontWeight="Bold" />
     <TabControl MinHeight="400"
-                Margin="0,0,37,0">
+                Margin="0,0,37,0"
+                Height="488">
       <TabItem Header="Main">
         <StackPanel HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch">
           <Button Name="BtnEmpezar"
-                  Content="Empezar simulación"
+                  Content="Construir Mall"
                   Margin="10,10,744,10"
                   Click="BtnEmpezar_OnClick" />
           <views:AddPisosView x:Name="PisosView"
@@ -42,14 +43,6 @@
         </StackPanel>
       </TabItem>
       <TabItem Header="Reporte General">
-        <TabItem.RenderTransform>
-          <TransformGroup>
-            <ScaleTransform />
-            <SkewTransform />
-            <RotateTransform Angle="0.796" />
-            <TranslateTransform />
-          </TransformGroup>
-        </TabItem.RenderTransform>
         <StackPanel Orientation="Horizontal">
           <!-- LocalesView -->
           <views:LocalesView />
@@ -108,5 +101,6 @@
       <TabItem Header="Ajustes"></TabItem>
 
     </TabControl>
+    <Button Margin="800,0,50,0" Height="30" Name="BtnCorrer" Content="Correr simulación" Click="BtnCorrer_OnClick"></Button>
   </StackPanel>
 </Window>

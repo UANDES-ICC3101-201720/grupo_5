@@ -54,6 +54,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Parche.cs" />
     <Compile Include="Programa\Servicio.cs" />
     <Compile Include="Programa\Trabajador.cs" />
     <Compile Include="UserControls\AddPisosView.xaml.cs">

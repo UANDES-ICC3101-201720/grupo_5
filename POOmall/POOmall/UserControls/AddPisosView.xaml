@@ -61,7 +61,8 @@
         <Button Name="BtnSiguiente"
                 Content="Siguiente"
                 Height="25"
-                Visibility="Hidden"></Button>
+                Visibility="Hidden"
+                Click="BtnSiguiente_OnClick"></Button>
       </StackPanel>
     </Grid>
   </Grid>

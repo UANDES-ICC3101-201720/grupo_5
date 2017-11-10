@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using POOmall.UserControls;
 
 namespace POOmall
 {
@@ -24,6 +25,7 @@ namespace POOmall
     {
         public int pisnum = new int();
         public List<Piso> pisos = new List<Piso>();
+        public int precioArriendo = 3000;
         public MainWindow()
         {
             Random rn = new Random();
@@ -38,19 +40,53 @@ namespace POOmall
             Categoria jue = new Categoria("Juegos");
             Categoria bow = new Categoria("Bowling");
             Categoria[] cats = new Categoria[] { ropa, hogar, alimento, ferre, tec, rapida, rest, cine, jue, bow };
-            int precioArriendo = 3;
+            //int precioArriendo = 3;
             int dineroInicial = 3000;
 
             pisnum = 1; // aqui debe ingresarlo el usuario
 
-            //pisnum = ContarPiso(); esto era antes, falla por pedir consola
+            // Comentado porque se genera en GetConstruccion
+            ////pisnum = ContarPiso(); esto era antes, falla por pedir consola
 
-            Piso pis = new Piso(1, 1000, true, true, false); //esto era solo para probar
-            pisos.Add(pis); //esto tmbn
+            //Piso pis = new Piso(1, 1000, true, true, false); //esto era solo para probar
+            //pisos.Add(pis); //esto tmbn
 
-            // Piso pis = CrearPisos(pisnum); esto era antes, falla por pedir consola
+            //// Piso pis = CrearPisos(pisnum); esto era antes, falla por pedir consola
 
 
+            //foreach (Piso p in pisos)
+            //{
+            //    if (p.Subterraneo == false)
+            //    {
+            //        CrearLocales(p, cats);
+            //    }
+            //}
+
+            InitializeComponent();
+
+            //runFinal(pisos, pisnum);
+
+        }
+
+        public void GetConstruccion()
+        {
+            Categoria ropa = new Categoria("Ropa");
+            Categoria hogar = new Categoria("Hogar");
+            Categoria alimento = new Categoria("Alimento");
+            Categoria ferre = new Categoria("Ferreteria");
+            Categoria tec = new Categoria("Tecnologia");
+            Categoria rapida = new Categoria("Comida Rapida");
+            Categoria rest = new Categoria("Restaurant");
+            Categoria cine = new Categoria("Cine");
+            Categoria jue = new Categoria("Juegos");
+            Categoria bow = new Categoria("Bowling");
+            Categoria[] cats = new Categoria[] { ropa, hogar, alimento, ferre, tec, rapida, rest, cine, jue, bow };
+
+            for (var i = 0; i < Parche.Pisos.Count; i++)
+            {
+                var piso = Parche.Pisos[i];
+                pisos.Add(new Piso(i+1, Convert.ToInt16(piso[1]), true, true, false));
+            }
             foreach (Piso p in pisos)
             {
                 if (p.Subterraneo == false)
@@ -58,13 +94,7 @@ namespace POOmall
                     CrearLocales(p, cats);
                 }
             }
-
-            InitializeComponent();
-
-            runFinal(pisos, pisnum);
-            
         }
-
         public void runFinal(List<Piso> pisos, int precioArriendo)
         {
             for (int day = 0; day < 10; day++)
@@ -441,6 +471,13 @@ namespace POOmall
         {
             this.PisosView.Visibility = Visibility.Visible;
             this.BtnEmpezar.IsEnabled = false;
+        }
+
+        private void BtnCorrer_OnClick(object sender, RoutedEventArgs e)
+        {
+            GetConstruccion();
+            runFinal(pisos, precioArriendo);
+
         }
     }
 }
