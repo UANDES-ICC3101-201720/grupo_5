@@ -436,5 +436,11 @@ namespace POOmall
         {
             repoCons.Text = string.Join("\r\n", File.ReadAllLines("reporte10.txt"));
         }
+
+        private void BtnEmpezar_OnClick(object sender, RoutedEventArgs e)
+        {
+            this.PisosView.Visibility = Visibility.Visible;
+            this.BtnEmpezar.IsEnabled = false;
+        }
     }
 }
