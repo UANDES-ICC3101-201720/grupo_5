@@ -75,8 +75,17 @@ namespace POOmall.UserControls
             try
             {
                 var areaPiso = Convert.ToUInt16(TextBoxAreaPiso.Text);
-                TiendasCollection.Add("1");
-                TextBoxAreaPiso.IsEnabled = false;
+                if (areaPiso < 500 || areaPiso > 1500)
+                {
+                    MessageBox.Show("El area debe ser entre 500 y 1500", "Error");
+                }
+                else
+                {
+                    TiendasCollection.Add("1");
+                    TextBoxAreaPiso.IsEnabled = false;
+                }
+                
+                
 
             }
             catch (FormatException)
@@ -95,6 +104,7 @@ namespace POOmall.UserControls
         private void BtnSiguiente_OnClick(object sender, RoutedEventArgs e)
         {
             Parche.Pisos = Pisos;
+            
         }
     }
 }
