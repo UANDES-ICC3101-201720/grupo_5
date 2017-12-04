@@ -9,8 +9,8 @@ namespace POOmall
 {
     public static class Parche
     {
-        public static ObservableCollection<string> TiendasCollection;
-        public static ObservableCollection<object[]> Pisos;
+        public static ObservableCollection<string> TiendasCollection = new ObservableCollection<string>();
+        public static ObservableCollection<object[]> Pisos = new ObservableCollection<object[]>();
         public static int precioArriendo;
         public static int dineroInicial;
     }

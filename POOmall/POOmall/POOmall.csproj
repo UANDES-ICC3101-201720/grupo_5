@@ -60,6 +60,7 @@
     <Compile Include="UserControls\AddPisosView.xaml.cs">
       <DependentUpon>AddPisosView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\AddPisosViewModel.cs" />
     <Compile Include="UserControls\DetallesView.xaml.cs">
       <DependentUpon>DetallesView.xaml</DependentUpon>
     </Compile>
