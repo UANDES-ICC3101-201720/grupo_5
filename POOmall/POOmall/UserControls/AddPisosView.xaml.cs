@@ -24,17 +24,16 @@ namespace POOmall.UserControls
     public partial class AddPisosView : UserControl
     {
         public ObservableCollection<string> TiendasCollection;
-        public ObservableCollection<object[]> Pisos;
+        public ObservableCollection<Piso> Pisos;
         private int _cuenta;
 
         public AddPisosView()
         {
             TiendasCollection = new ObservableCollection<string>();
-            Pisos = new ObservableCollection<object[]>();
+            Pisos = new ObservableCollection<Piso>();
             _cuenta = 0;
 
             InitializeComponent();
-            ListBoxAreas.ItemsSource = TiendasCollection;
             ListBox.ItemsSource = Pisos;
 
         }
@@ -54,39 +53,33 @@ namespace POOmall.UserControls
 
         private void BtnGuardar_OnClick(object sender, RoutedEventArgs e)
         {
-            //foreach (var item in TiendasCollection)
-            //{
-            //    MessageBox.Show($"{item}");
-            //}
-            Pisos.Add(new object[] {$"Tienda {_cuenta}", TextBoxAreaPiso.Text.ToString(), TiendasCollection});
-            TextBoxAreaPiso.Text = "";
-            TextBoxAreaPiso.IsEnabled = true;
-            TiendasCollection = new ObservableCollection<string>();
-            ListBoxAreas.ItemsSource = TiendasCollection;
-            _cuenta += 1;
-            if (Pisos.Count > 0)
-            {
-                BtnSiguiente.Visibility = Visibility.Visible;
-            }
-        }
-
-        private void BtnAddTiendas_OnClick(object sender, RoutedEventArgs e)
-        {
+            int areaPiso = 0;
             try
             {
-                var areaPiso = Convert.ToUInt16(TextBoxAreaPiso.Text);
+                areaPiso = Convert.ToUInt16(TextBoxAreaPiso.Text);
+                Piso piso = new Piso(Pisos.Count() + 1, areaPiso, Acc.IsChecked, Est.IsChecked, Sub.IsChecked);
                 if (areaPiso < 500 || areaPiso > 1500)
                 {
                     MessageBox.Show("El area debe ser entre 500 y 1500", "Error");
+                }
+                else if (Pisos.Count() > 0 && areaPiso > Pisos.Last().Espacio)
+                {
+                    MessageBox.Show("El area debe ser menor o igual al piso anterior", "Error");
                 }
                 else
                 {
                     TiendasCollection.Add("1");
                     TextBoxAreaPiso.IsEnabled = false;
+                    Pisos.Add(piso);
+                    TextBoxAreaPiso.Text = "";
+                    TextBoxAreaPiso.IsEnabled = true;
+                    TiendasCollection = new ObservableCollection<string>();
+                    _cuenta += 1;
+                    if(Sub.IsChecked == false)
+                    {
+                        Sub.IsEnabled = false;
+                    }
                 }
-                
-                
-
             }
             catch (FormatException)
             {
@@ -99,14 +92,19 @@ namespace POOmall.UserControls
                 TextBoxAreaPiso.Text = "";
             }
             
+            if (Pisos.Count > 0)
+            {
+                BtnSiguiente.IsEnabled = true;
+            }
         }
 
         private void BtnSiguiente_OnClick(object sender, RoutedEventArgs e)
         {
+            Parche.dineroInicial = Convert.ToInt32(TextBoxDineroInicial.Text);
+            Parche.precioArriendo = Convert.ToInt32(TextBoxArriendo.Text);
             Parche.Pisos = Pisos;
-            this.IsEnabled = false;
-            Window1 ventana = new Window1();
-            ventana.ShowDialog();
+            POOmall.MainWindow.Instance.Load.IsEnabled = false;
+            POOmall.MainWindow.Instance.BtnCorrer.IsEnabled = true;
         }
     }
 }

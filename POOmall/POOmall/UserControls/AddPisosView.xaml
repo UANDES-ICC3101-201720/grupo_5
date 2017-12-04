@@ -7,66 +7,51 @@
              mc:Ignorable="d"
              d:DesignHeight="360"
              d:DesignWidth="300">
-  <Grid VerticalAlignment="Stretch">
-    <Grid Margin="0,0,0,-10">
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="3*" />
-        <ColumnDefinition Width="3*" />
-      </Grid.ColumnDefinitions>
-      <StackPanel Grid.Column="0"
+
+    <Grid VerticalAlignment="Stretch">
+        <Grid Margin="0,0,0,-10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0"
                   Margin="0,0,0,60">
-        <Label Content="Lista de pisos:" />
-        <ListBox Name="ListBox"
-                 Height="300">
-          <ListBox.ItemTemplate>
-            <DataTemplate>
-              <TextBlock Text="Piso" />
-            </DataTemplate>
-          </ListBox.ItemTemplate>
+                <Label Content="Lista de pisos:" />
+                <ListBox Name="ListBox"
+                 Height="300" >
+                </ListBox>
 
-        </ListBox>
-
-      </StackPanel>
-      <StackPanel Grid.Column="1"
+            </StackPanel>
+            <StackPanel Grid.Column="1"
                   Margin="5,30,5,20">
-        <Label Content="Area del piso:" />
-        <TextBox PreviewTextInput="OnlyNumbers"
-                 Name="TextBoxAreaPiso" />
-        <Label Content="Cantidad de tiendas:" />
-        <Button Height="25"
-                Content="Agregar"
-                Name="BtnAddTiendas"
-                Click="BtnAddTiendas_OnClick" />
-        <Label Content="Area de cada tienda:" />
-        <ListBox ScrollViewer.VerticalScrollBarVisibility="Auto"
-                 Height="149"
-                 Name="ListBoxAreas">
-          <ListBox.ItemTemplate>
-            <DataTemplate>
-
-              <StackPanel Orientation="Horizontal">
-                <Label Content="Area:      " />
-                <TextBox Width="75"
-                         PreviewTextInput="OnlyNumbers"
-                         Text="{Binding this,   Mode=TwoWay, ElementName=TiendasCollection}" />
-              </StackPanel>
-            </DataTemplate>
-          </ListBox.ItemTemplate>
-        </ListBox>
-        <Button Name="BtnGuardar"
+                <Label Content="Area del piso:" Height="30" Margin="0,0,0,5" VerticalAlignment="Top"/>
+                <TextBox PreviewTextInput="OnlyNumbers"
+                 Name="TextBoxAreaPiso"  Margin="0,0,0,5"/>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,0" HorizontalAlignment="Left">
+                    <CheckBox x:Name="Est" Content="Est   " />
+                    <CheckBox x:Name="Acc" Content="Acc   " />
+                    <CheckBox x:Name="Sub" Content="Sub" />
+                </StackPanel>
+                <Button Name="BtnGuardar"
                 Click="BtnGuardar_OnClick"
+                Content="Agregar"
+                Margin="0,0,0,5"
+                Height="30"></Button>
+                <Label Content="Dinero Inicial:" Height="30" Margin="0,0,0,5"/>
+                <TextBox PreviewTextInput="OnlyNumbers"
+                 Name="TextBoxDineroInicial"  Margin="0,0,0,5" Text="10000" />
+                <Label Content="Sueldo Promedio:" Height="30" Margin="0,0,0,5"/>
+                <TextBox PreviewTextInput="OnlyNumbers"
+                 Name="TextBoxSueldo"  Margin="0,0,0,5" Text="3"/>
+                <Label Content="Arriendo:" Height="30" Margin="0,0,0,5"/>
+                <TextBox PreviewTextInput="OnlyNumbers"
+                 Name="TextBoxArriendo"  Margin="0,0,0,15" Text="2" />
+                <Button x:Name="BtnSiguiente"
                 Content="Guardar"
-                Margin="0,5"
-                Height="25"></Button>
-        <Button Name="BtnSiguiente"
-                Content="Siguiente"
-                Height="25"
-                Visibility="Hidden"
-                Click="BtnSiguiente_OnClick"></Button>
-      </StackPanel>
+                Height="30"
+                IsEnabled="False"
+                Click="BtnSiguiente_OnClick"/>
+            </StackPanel>
+        </Grid>
     </Grid>
-  </Grid>
 </UserControl>
-
-
-

@@ -6,12 +6,12 @@ namespace POOmall
     {
         public int Num;
         public int Espacio;
-        public Boolean Acceso;
-        public Boolean Estacionamiento;
-        public Boolean Subterraneo;
+        public bool? Acceso;
+        public bool? Estacionamiento;
+        public bool? Subterraneo;
         public Local[] Tiendas;
 
-        public Piso(int num, int esp, Boolean acc, Boolean est, Boolean sub)
+        public Piso(int num, int esp, bool? acc, bool? est, bool? sub)
         {
             this.Num = num;
             this.Espacio = esp;
@@ -20,6 +20,10 @@ namespace POOmall
             this.Subterraneo = sub;
             Local[] tie = new Local[3];
             Tiendas = tie;
+        }
+        public override string ToString()
+        {
+            return "Piso " + Num + ",  Area: " + Espacio + ",  Est: " + Estacionamiento + ",  Acc: " + Acceso + ",  Sub: " + Subterraneo;
         }
     }
 }

@@ -10,101 +10,100 @@
         Height="700"
         Width="1000"
         FontSize="18">
-  <StackPanel HorizontalAlignment="Stretch"
+    <StackPanel HorizontalAlignment="Stretch"
               VerticalAlignment="Stretch"
-              Margin="13,0,-13,0">
-    <TextBlock TextWrapping="Wrap"
+              Margin="13,0,2,0">
+        <TextBlock TextWrapping="Wrap"
                Text="POO Mall Simulator"
                FontSize="35"
                HorizontalAlignment="Center"
                FontWeight="Bold" />
-    <TabControl MinHeight="400"
+        <TabControl MinHeight="400"
                 Margin="0,0,37,0"
                 Height="488">
-      <TabItem Header="Main">
-        <StackPanel HorizontalAlignment="Stretch"
+            <TabItem Header="Creador">
+                <StackPanel HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch">
-          <Button Name="BtnEmpezar"
-                  Content="Construir Mall"
-                  Margin="10,10,744,10"
-                  Click="BtnEmpezar_OnClick" />
-          <views:AddPisosView x:Name="PisosView"
-                              Visibility="Hidden"
+                    <views:AddPisosView x:Name="PisosView"
+                              Visibility="Visible"
                               Height="457" />
 
-        </StackPanel>
-      </TabItem>
-      <TabItem Header="Locales">
-        <StackPanel Margin="10">
-          <Label Content="Para próxima entrega"/>
-          <StackPanel Orientation="Horizontal">
-            <!-- LocalesView -->
-            <views:LocalesView />
-            <!-- DetallesView -->
-            <views:DetallesView />
-          </StackPanel>
-        </StackPanel>
-        
-      </TabItem>
-      <TabItem Header="Reporte General">
-        <StackPanel Orientation="Horizontal">
-          <!-- LocalesView -->
-          <views:LocalesView />
-          <!-- DetallesView -->
-          <views:DetallesView />
-          <TextBox x:Name="repoCons"
+                </StackPanel>
+            </TabItem>
+            <TabItem x:Name="Reporte" Header="Reportes" IsEnabled="False">
+                <StackPanel Orientation="Horizontal">
+                    <!-- LocalesView -->
+                    <views:LocalesView />
+                    <!-- DetallesView -->
+                    <views:DetallesView />
+                    <TextBox x:Name="repoCons"
                    TextWrapping="Wrap"
                    IsReadOnly="True"
                    Text="Reporte"
                    Width="523" />
-          <StackPanel Orientation="Vertical"
+                    <StackPanel Orientation="Vertical"
                       Width="323">
-            <Button x:Name="rep1"
+                        <Button x:Name="rep1"
                     Content="Dia 1"
                     Margin="0,0,0,10"
                     Click="rep1_Click" />
-            <Button x:Name="rep2"
+                        <Button x:Name="rep2"
                     Content="Dia 2"
                     Margin="0,0,0,10"
                     Click="rep2_Click" />
-            <Button x:Name="rep3"
+                        <Button x:Name="rep3"
                     Content="Dia 3"
                     Margin="0,0,0,10"
                     Click="rep3_Click" />
-            <Button x:Name="rep4"
+                        <Button x:Name="rep4"
                     Content="Dia 4"
                     Margin="0,0,0,10"
                     Click="rep4_Click" />
-            <Button x:Name="rep5"
+                        <Button x:Name="rep5"
                     Content="Dia 5"
                     Margin="0,0,0,10"
                     Click="rep5_Click" />
-            <Button x:Name="rep6"
+                        <Button x:Name="rep6"
                     Content="Dia 6"
                     Margin="0,0,0,10"
                     Click="rep6_Click" />
-            <Button x:Name="rep7"
+                        <Button x:Name="rep7"
                     Content="Dia 7"
                     Margin="0,0,0,10"
                     Click="rep7_Click" />
-            <Button x:Name="rep8"
+                        <Button x:Name="rep8"
                     Content="Dia 8"
                     Margin="0,0,0,10"
                     Click="rep8_Click" />
-            <Button x:Name="rep9"
+                        <Button x:Name="rep9"
                     Content="Dia 9"
                     Margin="0,0,0,10"
                     Click="rep9_Click" />
-            <Button x:Name="rep10"
+                        <Button x:Name="rep10"
                     Content="Dia 10"
                     Click="rep10_Click" />
 
-          </StackPanel>
-        </StackPanel>
-      </TabItem>
-      <TabItem Header="Ajustes"></TabItem>
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
+            <TabItem x:Name="General" Header="Reporte General" IsEnabled="False">
+                <Grid>
+                    <TextBlock TextWrapping="Wrap" Margin="10,10,0,0" Text="Dia:"/>
+                    <TextBlock x:Name="Time" HorizontalAlignment="Left" Margin="58,10,0,0" TextWrapping="Wrap" Text="     " VerticalAlignment="Top"/>
 
-    </TabControl>
-    <Button Margin="800,15,50,0" Height="30" Name="BtnCorrer" Content="Correr simulación" Click="BtnCorrer_OnClick" Visibility="Hidden"></Button>
-  </StackPanel>
+                </Grid>
+
+            </TabItem>
+            <TabItem Header="Ajustes" IsEnabled="False"></TabItem>
+
+        </TabControl>
+        <StackPanel Orientation="Horizontal" Margin="0,30,0,0" HorizontalAlignment="Right">
+            <CheckBox VerticalContentAlignment="Center" Checked="CheckBox_Checked" Unchecked="CheckBox_UnChecked" />
+            <TextBlock TextWrapping="Wrap" Text=" Load: " Margin="0,0,15,0" VerticalAlignment="Center"/>
+            <TextBox x:Name="Load" Height="22" TextWrapping="Wrap" Text="Sim.txt" Width="245" IsEnabled="False"/>
+            <Button Margin="15,0,30,0" Height="30" x:Name="BtnCorrer" Content="Correr" Click="BtnCorrer_OnClick" IsEnabled="False"/>
+            
+        </StackPanel>
+
+    </StackPanel>
 </Window>

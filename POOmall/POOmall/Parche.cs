@@ -10,7 +10,7 @@ namespace POOmall
     public static class Parche
     {
         public static ObservableCollection<string> TiendasCollection;
-        public static ObservableCollection<object[]> Pisos;
+        public static ObservableCollection<Piso> Pisos;
         public static int precioArriendo;
         public static int dineroInicial;
     }

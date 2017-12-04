@@ -26,8 +26,9 @@ namespace POOmall
         public static MainWindow Instance { get; private set; }
         public int pisnum = new int();
         public List<Piso> pisos = new List<Piso>();
-        public int precioArriendo = 3000;
+        public int precioArriendo = 3;
         public int dineroInicial = 3000;
+        public int tiempo = 0;
 
         static MainWindow()
         {
@@ -35,43 +36,7 @@ namespace POOmall
         }
         private MainWindow()
         {
-            Random rn = new Random();
-            Categoria ropa = new Categoria("Ropa");
-            Categoria hogar = new Categoria("Hogar");
-            Categoria alimento = new Categoria("Alimento");
-            Categoria ferre = new Categoria("Ferreteria");
-            Categoria tec = new Categoria("Tecnologia");
-            Categoria rapida = new Categoria("Comida Rapida");
-            Categoria rest = new Categoria("Restaurant");
-            Categoria cine = new Categoria("Cine");
-            Categoria jue = new Categoria("Juegos");
-            Categoria bow = new Categoria("Bowling");
-            Categoria[] cats = new Categoria[] { ropa, hogar, alimento, ferre, tec, rapida, rest, cine, jue, bow };
-            //int precioArriendo = 3;
-            //int dineroInicial = 3000;
-
-            pisnum = 1; // aqui debe ingresarlo el usuario
-
-            // Comentado porque se genera en GetConstruccion
-            ////pisnum = ContarPiso(); esto era antes, falla por pedir consola
-
-            //Piso pis = new Piso(1, 1000, true, true, false); //esto era solo para probar
-            //pisos.Add(pis); //esto tmbn
-
-            //// Piso pis = CrearPisos(pisnum); esto era antes, falla por pedir consola
-
-
-            //foreach (Piso p in pisos)
-            //{
-            //    if (p.Subterraneo == false)
-            //    {
-            //        CrearLocales(p, cats);
-            //    }
-            //}
-
             InitializeComponent();
-
-            //runFinal(pisos, pisnum);
 
         }
 
@@ -94,8 +59,7 @@ namespace POOmall
 
             for (var i = 0; i < Parche.Pisos.Count; i++)
             {
-                var piso = Parche.Pisos[i];
-                pisos.Add(new Piso(i+1, Convert.ToInt16(piso[1]), true, true, false));
+                pisos.Add(Parche.Pisos[i]);
             }
             foreach (Piso p in pisos)
             {
@@ -105,17 +69,17 @@ namespace POOmall
                 }
             }
         }
+
         public void runFinal(List<Piso> pisos, int precioArriendo)
         {
-            for (int day = 0; day < 10; day++)
+            while(tiempo<10)
             {
+                tiempo++;
                 Random rn = new Random();
                 int contG = 0;
                 int contC = 0;
                 Stopwatch sw = new Stopwatch();
                 sw.Start();
-                Console.WriteLine();
-                Console.WriteLine("Dia " + day);
                 int c = 0;
                 int maxC = 0;
                 int minC = 1000000000;
@@ -183,35 +147,24 @@ namespace POOmall
 
                 contC += c;
                 contG += g;
-                string s0 = "Dia: " + (day+1);
+                string s0 = "Dia: " + tiempo;
                 string s1 = "Cantidad de clientes recepcionados: " + c;
-                string s2 = "Cantidad de clientes promedio por dia: " + contC / (day + 1);
+                string s2 = "Cantidad de clientes promedio por dia: " + contC / tiempo;
                 string s3 = "Ganacia total: " + g;
-                string s4 = "Ganacia promedio por dia: " + contG / (day + 1);
+                string s4 = "Ganacia promedio por dia: " + contG / tiempo;
                 string s5 = "Local con mayor ganancia: " + max.Nombre + " Ganancia: " + maxG;
                 string s6 = "Local con menor ganancia: " + min.Nombre + " Ganancia: " + minG;
                 string s7 = "Local con mayor clientes: " + max2.Nombre + " Atendidos: " + maxC;
                 string s8 = "Local con menor clientes: " + min2.Nombre + " Atendidos: " + minC;
                 string[] repFin = new string[] { s0, s1, s2, s3, s4, s5, s6, s7, s8 };
-                SaveReport(day, repFin);
-                while (sw.ElapsedMilliseconds < 100)
-                {
-                    //if (PauseCurrentOperation())
-                    //{
-                    //    break;
-                    //}
-                }
+                SaveReport(tiempo, repFin);
+                Time.Text = "" + tiempo;
             }
         }
 
         public static void SaveReport(int day, string[] repFin)
         {
-            File.WriteAllLines("reporte" + (day+1) + ".txt", repFin);
-        }
-
-        public static void RunSim(List<Piso> pisos, int precioArriendo, int contC, int contG)
-        {
-
+            File.WriteAllLines("reporte" + day + ".txt", repFin);
         }
 
         public static void CrearLocales(Piso p, Categoria[] cats)
@@ -235,180 +188,10 @@ namespace POOmall
         public static Local CrearRngLocal(Categoria[] cats, Piso p, int num)
         {
             Random rn = new Random();
-            string nombre = "tienda" + num;
+            string nombre = "Tienda" + num;
             Local loc = new Local(nombre, rn.Next(1, 15), rn.Next(10, 150), rn.Next(0, 50), rn.Next(50, 100), cats[rn.Next(0, 9)], p);
 
             return loc;
-        }
-
-        public static int ContarPiso()
-        {
-            Console.WriteLine("Numero de Pisos: (entre 1 y 10)");
-            string p = Console.ReadLine();
-            int pisnum = 0;
-            try
-            {
-                pisnum = Int32.Parse(p);
-            }
-            catch (Exception exception)
-            {
-                Console.WriteLine("Error de Ingreso.");
-                pisnum = ContarPiso();
-            }
-            if (pisnum < 1 || pisnum > 10)
-            {
-                Console.WriteLine("Error de Ingreso.");
-                pisnum = ContarPiso();
-            }
-            return pisnum;
-        }
-
-        public static List<Piso> CrearPisos(int num)
-        {
-            int err = 0;
-            List<Piso> pisos = new List<Piso>();
-            for (int i = 0; i < num; i++)
-            {
-                pisos.Add(CrearPiso(i));
-            }
-
-            for (int i = 1; i < num; i++)
-            {
-                if (pisos.ElementAtOrDefault(i).Espacio > pisos.ElementAtOrDefault(i - 1).Espacio)
-                {
-                    err++;
-                }
-            }
-
-            if (err != 0)
-            {
-                Console.WriteLine("El espacio de un piso no puede ser mayor que el piso debajo.");
-                for (int i = 0; i < num; i++)
-                {
-                    pisos.Add(CrearPiso(i));
-                }
-            }
-
-            err = 0;
-
-            for (int i = 1; i < num; i++)
-            {
-                if (pisos.ElementAtOrDefault(i).Subterraneo == true && pisos.ElementAtOrDefault(i - 1).Subterraneo == false)
-                {
-                    err++;
-                }
-            }
-
-            if (err != 0)
-            {
-                Console.WriteLine("No puede haber subterraneo sobre un no subterraneo");
-                for (int i = 0; i < num; i++)
-                {
-                    pisos.Add(CrearPiso(i));
-                }
-            }
-
-            return pisos;
-        }
-
-        public static Piso CrearPiso(int num)
-        {
-
-            Console.WriteLine();
-            Console.WriteLine("Piso numero: " + (num + 1));
-            int err = 0;
-            Console.WriteLine("Espacio del Piso: (entre 500 y 1500)");
-            string e = Console.ReadLine();
-            int espacio = 0;
-            try
-            {
-                espacio = Int32.Parse(e);
-            }
-            catch (Exception exception)
-            {
-                err++;
-            }
-            if (espacio < 500 || espacio > 1500)
-            {
-                err++;
-            }
-
-            Boolean acc = true;
-            Console.WriteLine("Es Acceso? (si o no)");
-            string y = Console.ReadLine();
-            if (y.Equals("no"))
-            {
-                acc = false;
-            }
-            else if (y.Equals("si")) { }
-            else
-            {
-                err++;
-            }
-
-            Boolean est = true;
-            Console.WriteLine("Tiene Estacionamiento? (si o no)");
-            string t = Console.ReadLine();
-            if (t.Equals("no"))
-            {
-                est = false;
-            }
-            else if (t.Equals("si")) { }
-            else
-            {
-                err++;
-            }
-
-            Boolean sub = true;
-            Console.WriteLine("Es Subterraneo? (si o no)");
-            string s = Console.ReadLine();
-            if (s.Equals("no"))
-            {
-                sub = false;
-            }
-            else if (s.Equals("si")) { }
-            else
-            {
-                err++;
-            }
-
-            Piso pis = new Piso(num, espacio, acc, est, sub);
-
-            if (err != 0)
-            {
-                Console.WriteLine("Error de Ingreso.");
-                pis = CrearPiso(num);
-            }
-
-            return pis;
-        }
-
-        public static bool PauseCurrentOperation()
-        {
-            if (Console.KeyAvailable)
-            {
-                var consoleKey = Console.ReadKey(true); // No mostrar tecla presionada en consola
-                if (consoleKey.Key == ConsoleKey.P) // Si la tecla presionada es P...
-                {
-                    Console.WriteLine("\nPresione Enter para continuar...");
-                    string input = Console.ReadLine();
-                    if (input == "c" || input == "C")
-                    {
-                        return false; // Continue 
-                    }
-                    else
-                    {
-                        // Despues de presionar Enter, se elimina el texto "Pesione Enter..." de la consola
-                        Console.SetCursorPosition(0, Console.CursorTop - 1);
-                        Console.Write(new string(' ', Console.BufferWidth));
-                        Console.SetCursorPosition(0, Console.CursorTop - 1);
-                        Console.SetCursorPosition(0, Console.CursorTop - 1);
-                        Console.Write(new string(' ', Console.BufferWidth));
-                        Console.SetCursorPosition(0, Console.CursorTop - 1);
-                    }
-                }
-            }
-            return false;
         }
 
         // log.txt  http://www.mcrook.com/2014/11/quick-and-easy-console-logging-trace.html
@@ -477,18 +260,27 @@ namespace POOmall
             repoCons.Text = string.Join("\r\n", File.ReadAllLines("reporte10.txt"));
         }
 
-        private void BtnEmpezar_OnClick(object sender, RoutedEventArgs e)
-        {
-            this.PisosView.Visibility = Visibility.Visible;
-            this.BtnEmpezar.IsEnabled = false;
-        }
-
         private void BtnCorrer_OnClick(object sender, RoutedEventArgs e)
         {
+            General.IsEnabled = true;
+            Reporte.IsEnabled = true;
             BtnCorrer.IsEnabled = false;
+            Reporte.IsSelected = true;
             GetConstruccion();
             runFinal(pisos, precioArriendo);
 
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            Load.IsEnabled = true;
+            BtnCorrer.IsEnabled = true;
+        }
+
+        private void CheckBox_UnChecked(object sender, RoutedEventArgs e)
+        {
+            Load.IsEnabled = false;
+            BtnCorrer.IsEnabled = false;
         }
     }
 }
