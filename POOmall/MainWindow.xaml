@@ -7,7 +7,7 @@
         x:Class="POOmall.MainWindow"
         mc:Ignorable="d"
         Title="POOMall"
-        Height="362"
+        Height="372"
         Width="614">
   <Grid>
     <TabControl>

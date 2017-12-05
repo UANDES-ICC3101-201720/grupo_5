@@ -66,20 +66,21 @@
       <Button Content="Añadir"
               Margin="15,0,15,0"
               Command="{Binding AddPisoCommand}" />
-    </StackPanel>
-    <StackPanel Grid.Column="2">
-      <Label Content="Crear tiendas:"
-             FontWeight="Bold" />
       <Grid>
         <Grid.ColumnDefinitions>
           <ColumnDefinition Width="2*" />
           <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
-        <Label Content="Dentro de piso:"
+        <Label Content="Piso seleccionado:"
                Grid.ColumnSpan="2" />
         <Label Content="{Binding SelectedPiso.Numero}"
                Grid.Column="1" />
       </Grid>
+    </StackPanel>
+    <StackPanel Grid.Column="2">
+      <Label Content="Crear tiendas:"
+             FontWeight="Bold" />
+      
 
       <Label Content="Nombre:" />
       <TextBox Margin="0,-5,0,0" Text="{Binding NombreTienda}"/>
@@ -95,11 +96,25 @@
                 Value="{Binding CantidadEmpleados}"/>
         <Label Content="{Binding ElementName=SliderEmpleados, Path=Value}" />
       </StackPanel>
-      <Label Content="Area:"
-             Margin="0,-5,0,0" />
-      <TextBox Margin="0,-5,0,0"
-               PreviewTextInput="OnlyNumbers" Text="{Binding AreaTienda}"/>
-      <Label Content="Precio mínimo:" />
+      <Grid>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="1*" />
+          <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Label Content="Area:"
+               Grid.ColumnSpan="2" />
+        <Label Content="{Binding ElementName=SliderAreaTienda, Path=Value}"
+               Grid.Column="1" />
+      </Grid>
+      <Slider Minimum="1"
+              Name="SliderAreaTienda"
+              Maximum="{Binding SelectedPiso.Area}"
+              TickFrequency="1"
+              Value="{Binding SliderAreaTiendaValue}"
+              IsSnapToTickEnabled="True" />
+      <Label />
+      <Label Content="Precio mínimo:"
+             Margin="0,-8,0,0" />
       <TextBox Margin="0,-5,0,0"
                PreviewTextInput="OnlyNumbers" 
                Text="{Binding PrecioMin}"/>
@@ -107,8 +122,10 @@
       <TextBox Margin="0,-5,0,0"
                PreviewTextInput="OnlyNumbers" 
                Text="{Binding PrecioMax}"/>
+      <Label Content="Categoría" Margin="0,-8,0,0"/>
+      <ComboBox ItemsSource="{Binding CategoriasEnum}" />
       <Button Content="Añadir"
-              Margin="15,15,15,0"
+              Margin="15,5,15,0"
               Command="{Binding AddTiendaCommand}" />
 
     </StackPanel>
