@@ -42,7 +42,8 @@ namespace POOmall.Model
             int cmax = (int)(CantidadClientesHoy + Area *
                                          Math.Max(100 - (PrecioMax * 0.5 + PrecioMin * 0.5), 0) * 0.001 *
                                          CantidadEmpleados);
-            CantidadClientesHoy = rn.Next(0, cmax);
+            CantidadClientesHoy = rn.Next(0, 100);//rn.Next(0, cmax);
+
             return CantidadClientesHoy;
 
         }

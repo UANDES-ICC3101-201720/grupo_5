@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using POOmall.Model;
 
 namespace POOmall.View
@@ -157,6 +158,11 @@ namespace POOmall.View
 
         private void OnAddTienda()
         {
+            if (PrecioMin>=PrecioMax)
+            {
+                MessageBox.Show("Precio minimo no puede ser mayor a precio maximo");
+                return;
+            }
             Tiendas.Add(new Tienda(NombreTienda, SelectedPiso.Numero, CantidadEmpleados, AreaTienda, PrecioMin, PrecioMax, Settings.Categoria.Ferreteria));
             NombreTienda = "blank";
             CantidadEmpleados = 1;

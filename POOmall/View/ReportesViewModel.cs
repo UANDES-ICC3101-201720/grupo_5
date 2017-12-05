@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using POOmall.Model;
 
 namespace POOmall.View
@@ -14,6 +15,7 @@ namespace POOmall.View
         public ReportesViewModel()
         {
             GenerarCommand = new RelayCommand(OnGenerar, CanGenerar);
+            ActualizarCommand = new RelayCommand(OnActualizar,CanActualizar);
         }
 
         public ObservableCollection<Reporte> Reportes
@@ -91,6 +93,19 @@ namespace POOmall.View
 
         }
 
+        public RelayCommand ActualizarCommand { get; }
+
+        private bool CanActualizar()
+        {
+            return true;
+        }
+
+        private void OnActualizar()
+        {
+            NotifyPropertyChanged("SelectedTienda");
+            NotifyPropertyChanged("SelectedDia");
+            NotifyPropertyChanged("ReporteTiendaSeleccionadaDiaSeleccionado");
+        }
 
 
 

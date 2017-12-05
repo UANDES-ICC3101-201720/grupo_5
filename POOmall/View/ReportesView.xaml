@@ -61,7 +61,13 @@
                      SelectedItem="{Binding SelectedTienda}" />
           </StackPanel>
           <StackPanel Grid.Column="1">
-            <Label Content="{Binding SelectedDia}"/>
+            <StackPanel Orientation="Horizontal">
+              <Label Content="{Binding SelectedDia}" />
+                <Button Content="Actualizar"
+                        Command="{Binding ActualizarCommand}"/>
+              </StackPanel>
+            
+            
             
             <TextBlock Text="{Binding ReporteTiendaSeleccionadaDiaSeleccionado}" />
 
@@ -69,9 +75,7 @@
         </Grid>
 
       </TabItem>
-      <TabItem Header="General día">
-        <Grid Background="#FFE5E5E5" />
-      </TabItem>
+        
         <TabItem Header="General acomulado">
           <Grid Background="#FFE5E5E5">
             <StackPanel>
