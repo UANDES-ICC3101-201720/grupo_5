@@ -24,9 +24,23 @@ namespace POOmall.View
             AreaLastPiso = 1500;
             CuentaPisos = 1;
             SliderAreaPisoValue = 1500;
+            var listaCat = new List<String>();
+            listaCat.Add("Hogar");
+            listaCat.Add("Ropa");
+            listaCat.Add("Alimentos");
+            listaCat.Add("Ferreteria");
+            listaCat.Add("Tecnologia");
+            listaCat.Add("ComidaRapida");
+            listaCat.Add("Restaurant");
+            listaCat.Add("Cine");
+            listaCat.Add("Juegos");
+            listaCat.Add("Bowling");
         }
 
 
+        public List<String> listaCat { get; set; }
+
+        
 
         public ObservableCollection<Piso> Pisos
         {
