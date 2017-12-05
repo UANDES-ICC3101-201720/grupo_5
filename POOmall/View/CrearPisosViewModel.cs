@@ -24,6 +24,11 @@ namespace POOmall.View
             AreaLastPiso = 1500;
             CuentaPisos = 1;
             SliderAreaPisoValue = 1500;
+            NombreTienda = "";
+            CantidadEmpleados = 1;
+            AreaTienda = 1;
+            PrecioMin = 1;
+            PrecioMax = 2;
         }
 
 
@@ -40,14 +45,9 @@ namespace POOmall.View
             Juegos,
             Bowling
         }
-        public IList<Categorias> CategoriasEnum
-        {
-            get
-            {
-                
-                return Enum.GetValues(typeof(Categorias)).Cast<Categorias>().ToList<Categorias>();
-            }
-        }
+        // Para poblar ComboBox desde enum, sacado de:
+        // ridgesolutions.ie/index.php/2014/11/05/wpf-xaml-binding-combobox-directly-to-enum-values
+        public IList<Categorias> CategoriasEnum => Enum.GetValues(typeof(Categorias)).Cast<Categorias>().ToList<Categorias>();
 
 
         public ObservableCollection<Piso> Pisos
@@ -111,6 +111,14 @@ namespace POOmall.View
         }
 
 
+        public int SliderAreaTiendaMax
+        {
+            get { return _sliderAreaTiendaMax; }
+            set { _sliderAreaTiendaMax = SelectedPiso?.Area ?? 0 - (Tiendas.Count > 0 ? Tiendas.Where(t => t.Piso == SelectedPiso.Numero).Sum(t => t.Area) : 0);  }
+        }
+
+
+
         #region AddPiso
         public RelayCommand AddPisoCommand { get; }
 
@@ -127,8 +135,7 @@ namespace POOmall.View
         }
 
         #endregion
-
-
+        
         #region AddTienda
 
         private string _nombreTienda;
@@ -172,6 +179,8 @@ namespace POOmall.View
             }
         }
         private int _precioMax;
+        private int _sliderAreaTiendaMax;
+
         public int PrecioMax
         {
             get => _precioMax;
@@ -192,11 +201,19 @@ namespace POOmall.View
         {
             if (PrecioMin>=PrecioMax)
             {
+                // Estos messagebox rompen el patrón MVVM, pero no encontramos otra forma de hacerlo
                 MessageBox.Show("Precio minimo no puede ser mayor a precio maximo");
                 return;
             }
+            if (Tiendas.Where(t => t.Piso == SelectedPiso.Numero).Sum(t => t.Area) + AreaTienda > SelectedPiso.Area)
+            {
+                // Estos messagebox rompen el patrón MVVM, pero no encontramos otra forma de hacerlo
+                MessageBox.Show("El área sumada de las tiendas no puede ser superior a la del piso que las contiene\n" + 
+                    $"Espacio restante: {SelectedPiso.Area - Tiendas.Where(t => t.Piso == SelectedPiso.Numero).Sum(t => t.Area)}");
+                return;
+            }
             Tiendas.Add(new Tienda(NombreTienda, SelectedPiso.Numero, CantidadEmpleados, AreaTienda, PrecioMin, PrecioMax, Settings.Categoria.Ferreteria));
-            NombreTienda = "blank";
+            NombreTienda = "";
             CantidadEmpleados = 1;
             AreaTienda = 1;
             PrecioMin = 1;
