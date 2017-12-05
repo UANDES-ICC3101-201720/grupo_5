@@ -72,9 +72,59 @@ namespace POOmall
 
         public void runFinal(List<Piso> pisos, int precioArriendo)
         {
-            while(tiempo<10)
+            if(tiempo<10)
             {
                 tiempo++;
+                if (tiempo >= 1)
+                {
+                    rep1.IsEnabled = true;
+                }
+
+                if (tiempo >= 2)
+                {
+                    rep2.IsEnabled = true;
+                }
+
+                if (tiempo >= 3)
+                {
+                    rep3.IsEnabled = true;
+                }
+
+                if (tiempo >= 4)
+                {
+                    rep4.IsEnabled = true;
+                }
+
+                if (tiempo >= 5)
+                {
+                    rep5.IsEnabled = true;
+                }
+
+                if (tiempo >= 6)
+                {
+                    rep6.IsEnabled = true;
+                }
+
+                if (tiempo >= 7)
+                {
+                    rep7.IsEnabled = true;
+                }
+
+                if (tiempo >= 8)
+                {
+                    rep8.IsEnabled = true;
+                }
+
+                if (tiempo >= 9)
+                {
+                    rep9.IsEnabled = true;
+                }
+
+                if (tiempo >= 10)
+                {
+                    rep10.IsEnabled = true;
+                    Avanzar.IsEnabled = false;
+                }
                 Random rn = new Random();
                 int contG = 0;
                 int contC = 0;
@@ -159,6 +209,10 @@ namespace POOmall
                 string[] repFin = new string[] { s0, s1, s2, s3, s4, s5, s6, s7, s8 };
                 SaveReport(tiempo, repFin);
                 Time.Text = "" + tiempo;
+            }
+            else
+            {
+
             }
         }
 
@@ -265,9 +319,9 @@ namespace POOmall
             General.IsEnabled = true;
             Reporte.IsEnabled = true;
             BtnCorrer.IsEnabled = false;
-            Reporte.IsSelected = true;
+            Panel.Visibility = Visibility.Hidden;
+            General.IsSelected = true;
             GetConstruccion();
-            runFinal(pisos, precioArriendo);
 
         }
 
@@ -275,12 +329,19 @@ namespace POOmall
         {
             Load.IsEnabled = true;
             BtnCorrer.IsEnabled = true;
+            PisosView.IsEnabled = false;
         }
 
         private void CheckBox_UnChecked(object sender, RoutedEventArgs e)
         {
             Load.IsEnabled = false;
             BtnCorrer.IsEnabled = false;
+            PisosView.IsEnabled = true;
+        }
+
+        private void Avanzar_Click(object sender, RoutedEventArgs e)
+        {
+            runFinal(pisos, precioArriendo);
         }
     }
 }

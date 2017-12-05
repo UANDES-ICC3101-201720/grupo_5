@@ -20,15 +20,49 @@
                FontWeight="Bold" />
         <TabControl MinHeight="400"
                 Margin="0,0,37,0"
-                Height="488">
+                Height="550" >
             <TabItem Header="Creador">
                 <StackPanel HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch">
+
+                    <StackPanel x:Name="Panel" Orientation="Horizontal" Margin="0,30,0,0" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Width="368">
+                        <StackPanel.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="0.041"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </StackPanel.RenderTransform>
+                        <CheckBox VerticalContentAlignment="Center" Checked="CheckBox_Checked" Unchecked="CheckBox_UnChecked" />
+                        <TextBlock TextWrapping="Wrap" Text=" Load: " Margin="0,0,15,0" VerticalAlignment="Center"/>
+                        <TextBox x:Name="Load" Height="22" TextWrapping="Wrap" Text="Sim.txt" Width="245" IsEnabled="False"/>
+
+                    </StackPanel>
+                    
                     <views:AddPisosView x:Name="PisosView"
                               Visibility="Visible"
-                              Height="457" />
+                              Height="402" />
+                    <Button Margin="0,0,0,0" Height="30" x:Name="BtnCorrer" Content="Correr" Click="BtnCorrer_OnClick" IsEnabled="False"/>
+
 
                 </StackPanel>
+
+            </TabItem>
+            <TabItem x:Name="Locales" Header="Loacales" IsEnabled="False">
+                <Grid>
+                    
+                </Grid>
+
+            </TabItem>
+            <TabItem x:Name="General" Header="General" IsEnabled="False">
+                <Grid>
+                    <TextBlock TextWrapping="Wrap" Margin="10,10,0,0" Text="Dia:" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="Time" HorizontalAlignment="Left" Margin="58,10,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top"/>
+                    <Button x:Name="Avanzar" Content="Avanzar" HorizontalAlignment="Left" Margin="8,39,0,0" VerticalAlignment="Top" Width="75" Click="Avanzar_Click"/>
+
+                </Grid>
+
             </TabItem>
             <TabItem x:Name="Reporte" Header="Reportes" IsEnabled="False">
                 <StackPanel Orientation="Horizontal">
@@ -43,67 +77,54 @@
                    Width="523" />
                     <StackPanel Orientation="Vertical"
                       Width="323">
-                        <Button x:Name="rep1"
+                        <Button x:Name="rep1" IsEnabled="False"
                     Content="Dia 1"
                     Margin="0,0,0,10"
                     Click="rep1_Click" />
-                        <Button x:Name="rep2"
+                        <Button x:Name="rep2" IsEnabled="False"
                     Content="Dia 2"
                     Margin="0,0,0,10"
                     Click="rep2_Click" />
-                        <Button x:Name="rep3"
+                        <Button x:Name="rep3" IsEnabled="False"
                     Content="Dia 3"
                     Margin="0,0,0,10"
                     Click="rep3_Click" />
-                        <Button x:Name="rep4"
+                        <Button x:Name="rep4" IsEnabled="False"
                     Content="Dia 4"
                     Margin="0,0,0,10"
                     Click="rep4_Click" />
-                        <Button x:Name="rep5"
+                        <Button x:Name="rep5" IsEnabled="False"
                     Content="Dia 5"
                     Margin="0,0,0,10"
                     Click="rep5_Click" />
-                        <Button x:Name="rep6"
+                        <Button x:Name="rep6" IsEnabled="False"
                     Content="Dia 6"
                     Margin="0,0,0,10"
                     Click="rep6_Click" />
-                        <Button x:Name="rep7"
+                        <Button x:Name="rep7" IsEnabled="False"
                     Content="Dia 7"
                     Margin="0,0,0,10"
                     Click="rep7_Click" />
-                        <Button x:Name="rep8"
+                        <Button x:Name="rep8" IsEnabled="False"
                     Content="Dia 8"
                     Margin="0,0,0,10"
                     Click="rep8_Click" />
-                        <Button x:Name="rep9"
+                        <Button x:Name="rep9" IsEnabled="False"
                     Content="Dia 9"
                     Margin="0,0,0,10"
                     Click="rep9_Click" />
-                        <Button x:Name="rep10"
+                        <Button x:Name="rep10" IsEnabled="False"
                     Content="Dia 10"
                     Click="rep10_Click" />
 
                     </StackPanel>
                 </StackPanel>
             </TabItem>
-            <TabItem x:Name="General" Header="Reporte General" IsEnabled="False">
-                <Grid>
-                    <TextBlock TextWrapping="Wrap" Margin="10,10,0,0" Text="Dia:"/>
-                    <TextBlock x:Name="Time" HorizontalAlignment="Left" Margin="58,10,0,0" TextWrapping="Wrap" Text="     " VerticalAlignment="Top"/>
-
-                </Grid>
-
+            <TabItem Header="Ajustes" IsEnabled="False">
+                
             </TabItem>
-            <TabItem Header="Ajustes" IsEnabled="False"></TabItem>
 
         </TabControl>
-        <StackPanel Orientation="Horizontal" Margin="0,30,0,0" HorizontalAlignment="Right">
-            <CheckBox VerticalContentAlignment="Center" Checked="CheckBox_Checked" Unchecked="CheckBox_UnChecked" />
-            <TextBlock TextWrapping="Wrap" Text=" Load: " Margin="0,0,15,0" VerticalAlignment="Center"/>
-            <TextBox x:Name="Load" Height="22" TextWrapping="Wrap" Text="Sim.txt" Width="245" IsEnabled="False"/>
-            <Button Margin="15,0,30,0" Height="30" x:Name="BtnCorrer" Content="Correr" Click="BtnCorrer_OnClick" IsEnabled="False"/>
-            
-        </StackPanel>
 
     </StackPanel>
 </Window>

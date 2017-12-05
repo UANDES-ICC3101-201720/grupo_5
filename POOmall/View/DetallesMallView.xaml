@@ -1,0 +1,78 @@
+﻿<UserControl x:Class="POOmall.View.DetallesMallView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:POOmall.View"
+             xmlns:data="clr-namespace:POOmall.Model"
+             mc:Ignorable="d"
+             d:DesignHeight="300"
+             d:DesignWidth="300">
+  <UserControl.DataContext>
+    <local:DetallesMallViewModel />
+  </UserControl.DataContext>
+  <UserControl.Resources>
+    <DataTemplate DataType="{x:Type data:Tienda}">
+      <StackPanel Orientation="Horizontal">
+        <Label Content="{Binding Nombre}" />
+        <Label Content="Piso: " />
+        <Label Content="{Binding Piso}"
+               Margin="-10,0,0,0" />
+      </StackPanel>
+    </DataTemplate>
+  </UserControl.Resources>
+  <Grid>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="1*" />
+      <ColumnDefinition Width="1*" />
+    </Grid.ColumnDefinitions>
+    <StackPanel Grid.Column="0">
+      <Label Content="Tiendas"
+             FontWeight="Bold" />
+      <ListBox ItemsSource="{Binding Tiendas}"
+               Height="250"
+               SelectedItem="{Binding SelectedTienda}" />
+    </StackPanel>
+    <StackPanel Grid.Column="1">
+      <Label Content="Detalles tienda seleccionada"
+             FontWeight="Bold" />
+      <StackPanel Orientation="Horizontal">
+        <Label Content="Nombre: " />
+        <TextBox Text="{Binding SelectedTienda.Nombre}"
+                 Width="75" />
+      </StackPanel>
+      <StackPanel Orientation="Horizontal">
+        <Label Content="Piso: " />
+        <Label Content="{Binding SelectedTienda.Piso}" />
+      </StackPanel>
+      <StackPanel Orientation="Vertical">
+        <Label Content="Cantidad de empleados: " />
+        <StackPanel Orientation="Horizontal"
+                    Margin="0,-5,0,0">
+          <Slider Minimum="1"
+                  Name="SliderEmpleados"
+                  Maximum="100"
+                  TickFrequency="1"
+                  IsSnapToTickEnabled="True"
+                  Width="120"
+                  Value="{Binding SelectedTienda.CantidadEmpleados}" />
+          <Label Content="{Binding ElementName=SliderEmpleados, Path=Value}" />
+        </StackPanel>
+      </StackPanel>
+      <StackPanel Orientation="Horizontal">
+        <Label Content="Area: " />
+        <Label Content="{Binding SelectedTienda.Area}" />
+      </StackPanel>
+      <StackPanel Orientation="Horizontal">
+        <Label Content="Precio mínimo: " />
+        <Label Content="{Binding SelectedTienda.PrecioMin}" />
+      </StackPanel>
+      <StackPanel Orientation="Horizontal">
+        <Label Content="Precio máximo: " />
+        <Label Content="{Binding SelectedTienda.PrecioMax}" />
+      </StackPanel>
+      
+    </StackPanel>
+
+  </Grid>
+</UserControl>

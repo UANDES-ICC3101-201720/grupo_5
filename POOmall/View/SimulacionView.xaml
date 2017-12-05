@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="POOmall.View.SimulacionView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:POOmall.View"
+             xmlns:view="clr-namespace:POOmall.View"
+             mc:Ignorable="d"
+             d:DesignHeight="300"
+             d:DesignWidth="300">
+  <UserControl.DataContext>
+    <view:SimulacionViewModel />
+  </UserControl.DataContext>
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="3*" />
+      <RowDefinition Height="10*" />
+    </Grid.RowDefinitions>
+    <Grid Grid.Row="0">
+      <Label Content="Día actual: " FontSize="20" FontWeight="Bold"/>
+      <Label Content="{Binding Dia}" 
+             Margin="120,0,0,0"
+             FontSize="20"
+             FontWeight="Bold" />
+    </Grid>
+    <Grid Grid.Row="1">
+      <StackPanel>
+                <Button Content="Simular Día" Command="{Binding ComenzarCommand}" Margin="50,0,50,0"/>
+            </StackPanel>
+    </Grid>
+
+  </Grid>
+</UserControl>
