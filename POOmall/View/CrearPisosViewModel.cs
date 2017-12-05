@@ -58,6 +58,7 @@ namespace POOmall.View
 
         private int _areaLastPiso;
         private int _sliderAreaPisoValue;
+        private int _sliderAreaTiendaValue;
 
         public int SliderAreaPisoValue
         {
@@ -75,6 +76,15 @@ namespace POOmall.View
             {
                 _areaLastPiso = value;
                 NotifyPropertyChanged("AreaLastPiso");
+            }
+        }
+        public int SliderAreaTiendaValue
+        {
+            get => _sliderAreaTiendaValue;
+            set
+            {
+                _sliderAreaTiendaValue = value;
+                NotifyPropertyChanged("SliderAreaTiendaValue");
             }
         }
 
@@ -122,7 +132,7 @@ namespace POOmall.View
         private int _areaTienda;
         public int AreaTienda
         {
-            get => _areaTienda;
+            get => SliderAreaTiendaValue;
             set
             {
                 _areaTienda = value;
