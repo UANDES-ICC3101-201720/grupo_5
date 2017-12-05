@@ -123,7 +123,7 @@
                PreviewTextInput="OnlyNumbers" 
                Text="{Binding PrecioMax}"/>
       <Label Content="Categoría" Margin="0,-8,0,0"/>
-      <ComboBox ItemsSource="{Binding listaCat}" />
+      <ComboBox ItemsSource="{Binding CategoriasEnum}" />
       <Button Content="Añadir"
               Margin="15,5,15,0"
               Command="{Binding AddTiendaCommand}" />
