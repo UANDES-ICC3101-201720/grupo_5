@@ -15,6 +15,7 @@ namespace POOmall.Model
         public int PrecioMin { get; set; }
         public int PrecioMax { get; set; }
         public Settings.Categoria Categoria { get; set; }
+        public Random rn = new Random();
 
         public int CantidadClientesHoy;
 
@@ -41,14 +42,14 @@ namespace POOmall.Model
             int cmax = (int)(CantidadClientesHoy + Area *
                                          Math.Max(100 - (PrecioMax * 0.5 + PrecioMin * 0.5), 0) * 0.001 *
                                          CantidadEmpleados);
-            CantidadClientesHoy = Settings.GetRandomInt(0, cmax);
+            CantidadClientesHoy = rn.Next(0, cmax);
             return CantidadClientesHoy;
 
         }
 
         public int CalcularGanacia()
         {
-            int ventaPromedio = Settings.GetRandomInt(PrecioMin, PrecioMax);
+            int ventaPromedio = rn.Next(PrecioMin, PrecioMax);
             int costoArriendo = Area * Settings.PrecioArriendo;
             GananciaTienda = ventaPromedio * CantidadClientesHoy - CantidadEmpleados * Settings.SueldoEmpreados - costoArriendo;
             return GananciaTienda;

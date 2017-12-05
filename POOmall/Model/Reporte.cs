@@ -23,7 +23,7 @@ namespace POOmall.Model
 
         public override string ToString()
         {
-            return $"Tienda: {Tienda.Nombre} \nDía: {Dia}\nCantidad de clientes recepcionados: {CantidadClientes}\nGanancia de hoy: {Ganancia}";
+            return "Tienda:" + Tienda.Nombre + "\nDía: " + Dia + "\nCantidad de Clientes: " + CantidadClientes + "\nGanancia Hoy: " + Ganancia;
         }
     }
 }
